@@ -21,3 +21,19 @@ public class Application {
 
         System.out.println("Main - requesting MessageService");
         //MessageService service = (MessageService)ctx.getBean("MessageService");
+        MessageService service = ctx.getBean(MessageService.class);
+        System.out.println(service.getMessage());
+
+        System.out.println("Main - requesting MessageService (again)");
+        MessageService s2 = ctx.getBean(MessageService.class);
+        if (service == s2) {
+            System.out.println("Main -> They are the same service instance");
+        }
+        System.out.println("Main - requesting CalculationService");
+        CalculationService calc = ctx.getBean(CalculationService.class);
+        System.out.println("Main - " + calc.calc("+", 10, 12));
+
+        System.out.println("Main - requesting CalculationService (again)");
+        CalculationService calc2 = ctx.getBean(CalculationService.class);
+        System.out.println("Main - " + calc2.calc("+", 8, 6));
+
