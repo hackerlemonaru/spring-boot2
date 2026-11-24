@@ -37,3 +37,18 @@ public class Application {
         CalculationService calc2 = ctx.getBean(CalculationService.class);
         System.out.println("Main - " + calc2.calc("+", 8, 6));
 
+        System.out.println("Main - requesting ExpensiveService");
+        ExpensiveService es = ctx.getBean(ExpensiveService.class);
+
+        PrintService printer = ctx.getBean(PrintService.class);
+        printer.print("Hello");
+
+        LoggingService logging = ctx.getBean(LoggingService.class);
+        logging.log("logged message");
+
+        DataService data = ctx.getBean("MyDataService", DataService.class);
+        System.out.println(data.getData());
+
+    }
+
+}
